@@ -58,7 +58,6 @@ dc过高
 
 
 18、对ios资源使用pvr.ccz
-19、
  
 19、过多log打印,即使线上会屏蔽方体，但是参数计算也占用资源删除不用的 console.log,尤其是带 JSON.stringfly
 
@@ -67,6 +66,13 @@ dc过高
  
 
 21、mp3未优化，对游戏音效进行优化，对于一般背景音乐控制到800k左右，音频文件采样率在96-128kbps,比特率44khz	
+
+22、实例化prefab优化，不要在同一帧中做大量的实例化操作，避免内存的突然飙升。可以借用第三方库async  
+　　　Async.eachLimit(array, 3, (index, cb) =>{
+　　　let newNode = new cc.instantiate(prefab);
+　　　newNode.parent = xxxx;
+　　　setTimeout(cb, 0);
+　　　});
 
 
  
